@@ -1,12 +1,5 @@
-№;id;*Ad, soyad, ata adı;*Faktiki yaşadığı ünvan;Cins ;*Təvəllüd;*Əlaqə nömrəsi;E-poçt;Sosial durum ;*Müraciətin növü;*Müraciətin xarakteri ;*Müraciətin aid olduğu ərazi vahidi: (Bunu rayonların adın punkt olaraq və ya sadəcə yazmaları üçün yer qoymaqla etmək olar);*Müraciətin mövzusu;*Müraciətin məzmunu;*Əlavə qoşma fayllar
-1;154219874;İmran əliyev;Baki;Kişi;66))777;"₽₽77₽);:";"77)(;;;";səhiyyə işçisi;Təklif;Fərdi;Hgf;Təhsil;Hdvcdü;Yes
-2;74025504;Eəhimova Elmira Ağasəlim;Binəqədi;Cins;1997;515009543;emarahimova@gmail.com;İşsiz;Ərizə;Fərdi;Binəqədi;siğorta;Sığortanın alınmasına görə;Yes
-3;749817489;Şəbnəm Bayramlı Adil;Suraxanı rayonu, Günəşli qəsəbəsi;Cins;1999;Qeyd etmirəm😀;Lazım deyil😀;tələbə;Şikayət;Fərdi;Suraxanı;Təhsil;Təhsil;No
-4;712517395;Vüsal Muradlı Faiq;Abşeron Gənclər Şəhərciyi blok 54;Kişi;8 Fevral 1990;514222220;vusall.muradli@gmail.com;tələbə;Şikayət;Fərdi;Abşeron;Ekologiya;Yaşıllıq sahələrinin çox az olması;No
-5;422003249;Nərgiz Absalamova, Fəzail;Atatürk pr. 115, blok 2, mənzil 53.;Cins;1998.07.17;508099659;Absalamovanergiz@gmail.com;digər;Təklif;Fərdi;Ayna Shltanov;Humanitar yardım ayrılması;Acam;No
-6;434092138;Ehm Ehm Ehm;Zəngəzur;Cins;1910;0;H@h;fermer;Təklif;H;Zəngəzur;Təbii fəlakətlərlə bağlı məsələlər;A;No
-7;964296210;Никита;Русский;Kişi;2003;8961774789757;mail@mail.com;İşsiz;Təklif;Иванов Иван Иванович;Я не понимаю;sosial yardım;Нужно что-то сообщить;Yes
-7;792891639;Anar, Quliyev, Şükür;Bakı şəhəri;Kişi;1994;+9945256845554;Anar,pictor@gmail.com;din xadimi;Şikayət;Vüsal Muradlı;Bakı;Özəlləşdirmə;Dini obyektlərin özəlləşdirilməsi;No
-7;964296210;Привет;Чидчрд;Kişi;Велые;Вплыпл;Ыплыел;təhsil işçisi;Təklif;Евлпдыпщ;Впляпбяп;Səhiyyə;Рлямбямд;No
-7;964296210;;2;3;4;Kişi;6;7;Ərizə;👨\u200d🎓 Tələbə;10;🏭 Sənaye;12;Xeyr
-8;1475819585;;Gxgkz;Xgkxxgyl;Xfjzgk;Kişi;Kgxylx;Xgkzkyx;Ərizə;👵🏻🧓🏻 Təqaüdçü;Иванов Иван Иванович;🏦 Bank işi;Чеядрсн;Bəli
+№;id; Müraciətin növü: ;Xahiş olunur Adınızı Soyadınızı Atanızın adını  ardıcıllıqla yazın;Təvəllüd (Misal: 10.01.1991);📞 Əlaqə nömrəsi: (Misal:  070 222 95 16);Cins: ;📍Faktiki yaşadığı ünvan:;🗺️ Şəhər / Rayon;✉️  E-poçt; Sosial durum (Və ya mətn yazın 🖊️ ) : ;💬 Müraciətin xarakteri :;💬 Müraciətin mövzusu:;📃 Müraciətin məzmunu: ;Xahişinizə görə şəkillər, videolar, Audio və digər fayllar əlavə edin və sonra bəli və ya Xeyr düyməsini basın (faylları yükləmək istəmirsinizsə)
+1;964296210;Təklif;nknsjorm;10.01.1991;070 222 95 16;Cins;ылдурлдыу;уапе;укенг@;👨\u200d⚕ Səhiyyə işçisi;Fərdi;👩🏻\u200d⚕️ Səhiyyə;wkghrjgk;Bəli
+2;154219874;Ərizə;İmran Əliyev Bagır;07.07.1989;0502957778;Kişi;Bakı Nizami;Baki;İmranalizadeh@gmail.com;🕴🏻Sahibkar;Fərdi;👨🏻\u200d🎨 Mədəniyyət;Kfks;Bəli
+3;154219874;Təklif;J;1;999999999;Qadın;₽/;&/;@/;👵🏻🧓🏻 Təqaüdçü;Fərdi;🏭 Sənaye;Is;Xeyr
+4;964296210;Ərizə;Никита Москалев Олегович;10.01.1991;070 222 95 16;Kişi;Россия;Екатеринбург;mail@mail.ru;🎓 Tələbə;Ivanov Ivan and start;🎨 Mədəniyyət;Надо что-то делать;Xeyr

@@ -77,7 +77,7 @@ def vopros_input():
         # Считывание данных из CSV файла
         # print(file_reader)
         for row in file_reader:
-            print(row)
+            # print(row)
             data1[count] = {
                 'agreement': row['agreement'],
                 'Send request': row['Send request'],
@@ -87,7 +87,7 @@ def vopros_input():
 
             }
             count += 1
-    print(data1)
+
 
 
     return data, data1
@@ -178,51 +178,53 @@ def Save_data_exel(id_page, Global_vopros):
 
 
         with open('Output_csv/Data.txt', 'w', encoding='utf-8') as file:
-            file.write('1')
+            file.write('0')
 
     if not os.path.exists('Output_csv/Data.csv'):
         new_file(Global_vopros)
 
     with open('Output_csv/Data.txt', 'r') as file:
         namber = int(file.readline()) + 1
-        if namber > 100000:
-            for admin_bot in admin_list:
-                bot.send_document(admin_bot, open(r'Output_csv/Data.csv', 'rb'))
-            os.rename('Output_csv/Data.csv', f'Output_csv/Data_{time.time()}.csv')
-            new_file(Global_vopros)
-            namber = 1
 
-        file_list = [
-            namber,
-            templates[f"{id_page}"]['id'],
-            templates[f"{id_page}"]['FIO'],
-            templates[f"{id_page}"]['2'],
-            templates[f"{id_page}"]['3'],
-            templates[f"{id_page}"]['4'],
-            templates[f"{id_page}"]['gender'],
-            templates[f"{id_page}"]['6'],
-            templates[f"{id_page}"]['7'],
-            templates[f"{id_page}"]['of_appeal'],
-            templates[f"{id_page}"]['9'],
-            templates[f"{id_page}"]['123963appeal'],
-            templates[f"{id_page}"]['11'],
-            templates[f"{id_page}"]['12'],
-            templates[f"{id_page}"]['file']]
 
-        with open('Output_csv/Data.csv', 'a', encoding='utf-8', newline='') as file:
-            writer = csv.writer(file, delimiter=';')
-            writer.writerows([file_list])
+    if namber > 100000:
+        for admin_bot in admin_list:
+            bot.send_document(admin_bot, open(r'Output_csv/Data.csv', 'rb'))
+        os.rename('Output_csv/Data.csv', f'Output_csv/Data_{time.time()}.csv')
+        new_file(Global_vopros)
+        namber = 1
 
-        bot.send_message(int(templates[f'{id_page}']['id']), 'Thank you, your application has been saved. To start the bot again, press /start')
+    file_list = [
+        namber,
+        templates[f"{id_page}"]['id'],
+        templates[f"{id_page}"]['of_appeal'],
+        templates[f"{id_page}"]['FIO'],
+        templates[f"{id_page}"]['3'],
+        templates[f"{id_page}"]['4'],
+        templates[f"{id_page}"]['gender'],
+        templates[f"{id_page}"]['6'],
+        templates[f"{id_page}"]['7'],
+        templates[f"{id_page}"]['8'],
+        templates[f"{id_page}"]['9'],
+        templates[f"{id_page}"]['123963appeal'],
+        templates[f"{id_page}"]['11'],
+        templates[f"{id_page}"]['12'],
+        templates[f"{id_page}"]['file']]
 
-        del templates[f"{id_page}"]
-        with open("data/data.json", "w", encoding='utf-8') as file:
-            json.dump(templates, file, indent=4, ensure_ascii=False)
+    with open('Output_csv/Data.csv', 'a', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file, delimiter=';')
+        writer.writerows([file_list])
+    # print(str(templates[f'{id_page}']['FIO']))
+    bot.send_message(int(templates[f'{id_page}']['id']), f"{str(templates[f'{id_page}']['FIO']).split(' ')[0]} Sizin müraciətiniz qeydə alınmışdır. Müraciətinizə meclisinfo tərəfindən baxıldıqdan sonra geri dönüş ediləcəkdir.")
+
+    del templates[f"{id_page}"]
+    with open("data/data.json", "w", encoding='utf-8') as file:
+        json.dump(templates, file, indent=4, ensure_ascii=False)
 
     with open('Output_csv/Data.txt', 'w') as file:
         file.write(str(namber))
 
-
+    selfmyself1(id_page=id_page)
 
 
 
@@ -252,8 +254,8 @@ def callback(call):
 
         if call.data == 'Qadın':
 
-            templates[f'{call.message.chat.id}']['gender'] = 'Cins'
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='Cins')
+            templates[f'{call.message.chat.id}']['gender'] = 'Qadın'
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='Qadın')
             templates[f"{call.message.chat.id}"]['Number'] = str(
                 int(templates[f"{call.message.chat.id}"]['Number']) + 1)
 
@@ -286,7 +288,7 @@ def callback(call):
             templates[f"{call.message.chat.id}"]['Number'] = str(int(templates[f"{call.message.chat.id}"]['Number']) + 1)
         elif call.data == 'Kollektiv':
             templates[f'{call.message.chat.id}']['123963appeal'] = 'Kollektiv'
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='Enter other people`s details')
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text=f"✅ {str(templates[f'{call.message.chat.id}']['FIO']).split(' ')[0]} xahiş olunur digər subyektlərin ad, soyad, ata adı və əlaqə nömrələrini ardıcıllıqla yazasınız")
             templates[f"{call.message.chat.id}"]['Number'] = '!!!'
             time.sleep(0.5)
 
@@ -323,9 +325,22 @@ def callback(call):
             bot.send_message(call.message.chat.id, One_data[1]['Hot lines'])
             return 1
 
-        # elif call.data == 'question_global':
-        #     bot.send_message(call.message.chat.id)
-        #     return 1
+        elif call.data == 'URL_global':
+
+            markup = types.InlineKeyboardMarkup(row_width=3)
+            # for i in range(1, 18+1):
+            #     item2 = types.InlineKeyboardButton('Пока', callback_data=f'{i}')
+            #     markup.add(item2)
+            # i = 1
+            item1 = types.InlineKeyboardButton('Facebook', url='https://m.facebook.com/meclisinfo')
+            item2 = types.InlineKeyboardButton('Instagram', url='https://instagram.com/meclis.info')
+            item3 = types.InlineKeyboardButton('TikTok', url='https://www.tiktok.com/@meclis.info')
+            item4 = types.InlineKeyboardButton('YouTube', url='https://youtube.com/channel/UC_te1GjfOAg4eyBnhVDZvbg')
+            item5 = types.InlineKeyboardButton('🌐 Meclis', url='https://meclis.info/')
+            markup.add(item1, item2, item3, item4, item5)
+
+            bot.send_message(call.message.chat.id, 'Bizi izlə', reply_markup=markup)
+            return 1
 
 
 
@@ -356,6 +371,21 @@ def selfmyself(message):
 
     bot.send_message(message.from_user.id, 'Siz əsas menyudasınız. Seçim edin', reply_markup=markup)
 
+
+def selfmyself1(id_page):
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    # for i in range(1, 18+1):
+    #     item2 = types.InlineKeyboardButton('Пока', callback_data=f'{i}')
+    #     markup.add(item2)
+    # i = 1
+    item1 = types.InlineKeyboardButton('📢 Müraciətini göndər', callback_data='Greedy_global')
+    item2 = types.InlineKeyboardButton('☎️ Qaynar xətlər', callback_data=f'Telephone')
+    item3 = types.InlineKeyboardButton('🤔 Sual ver', url=f"https://t.me/{str(One_data[1]['Question'])}")
+    item4 = types.InlineKeyboardButton('🔗 Bizi izlə', callback_data=f'URL_global')
+
+    markup.add(item1, item2, item3, item4)
+
+    bot.send_message(id_page, 'Siz əsas menyudasınız. Seçim edin', reply_markup=markup)
 
 
 
@@ -388,13 +418,13 @@ def texl_loyder(message):
             templates = json.load(f)
 
 
-        if templates[f"{message.from_user.id}"]['Number'] == '1':
+        if templates[f"{message.from_user.id}"]['Number'] == '2':
             templates[f"{message.from_user.id}"]['FIO'] = message.text
-            templates[f"{message.from_user.id}"]['Number'] = '2'
+            templates[f"{message.from_user.id}"]['Number'] = '3'
 
         elif templates[f"{message.from_user.id}"]['Number'] == '0':
-            # selfmyself(message=message)
-            pass
+            templates[f"{message.from_user.id}"]['Number'] = '1'
+
         elif templates[f"{message.from_user.id}"]['Number'] == "!!!":
             templates[f'{message.from_user.id}']['123963appeal'] = message.text
             templates[f"{message.from_user.id}"]['Number'] = '11'
@@ -402,9 +432,50 @@ def texl_loyder(message):
                 json.dump(templates, file, indent=4, ensure_ascii=False)
             # vopros_vi(bot, message.from_user.id, templates[f'{message.from_user.id}']['Number'])
         else:
-            templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
-            templates[f"{message.from_user.id}"]['Number'] = str(int(templates[f"{message.from_user.id}"]['Number']) + 1)
+            if templates[f"{message.from_user.id}"]['Number'] == '3':
+                for bykva in list(str(message.text)):
+                    if not bykva in '1234567890., ':
+                        print(f'{bykva} - неверно')
+                        bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                        return 1
 
+
+
+                templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
+                templates[f"{message.from_user.id}"]['Number'] = str(int(templates[f"{message.from_user.id}"]['Number']) + 1)
+
+            elif templates[f"{message.from_user.id}"]['Number'] == '4':
+                caunt_local = 0
+                for bykva in list(str(message.text)):
+                    if not bykva in '1234567890 ':
+                        print(f'{bykva} - неверно')
+                        bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                        return 1
+                    elif bykva in '1234567890':
+                        caunt_local += 1
+
+                if caunt_local < 9:
+                    bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                    return 1
+
+                templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
+                templates[f"{message.from_user.id}"]['Number'] = str(int(templates[f"{message.from_user.id}"]['Number']) + 1)
+
+
+            elif templates[f"{message.from_user.id}"]['Number'] == '8':
+
+                if not '@' in str(message.text):
+                    print(f'неверно')
+                    bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                    return 1
+
+                templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
+                templates[f"{message.from_user.id}"]['Number'] = str(int(templates[f"{message.from_user.id}"]['Number']) + 1)
+
+            else:
+
+                templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
+                templates[f"{message.from_user.id}"]['Number'] = str(int(templates[f"{message.from_user.id}"]['Number']) + 1)
 
         vopros_vi(bot, message.from_user.id, templates[f'{message.from_user.id}']['Number'])
         with open("data/data.json", "w", encoding='utf-8') as file:
@@ -510,31 +581,28 @@ def repeat_all_message(message):
             break
 
 
-bot.polling()
+# bot.polling()
 #
 
-# while True:
-#     try:
-#         print("[*] bot starting..")
-#         for admin in admin_list:
-#             bot.send_message(int(admin), "[*] bot starting..")
-#             print("[*] bot started!")
-#             bot.send_message(int(admin), "[*] bot started!")
-#         bot.polling(none_stop=True, interval=2)
-#         # Предполагаю, что бот может мирно завершить работу, поэтому
-#         # даем выйти из цикла
-#         break
-#
-#     except Exception as ex:
-#         print("[*] error - {}".format(str(ex))) # Описание ошибки
-#
-#
-#         print("[*] rebooting..")
-#             # bot.send_message(int(admin), "[*] rebooting..")
-#
-#         bot.stop_polling()
-#         # Останавливаем чтобы не получить блокировку
-#         time.sleep(15)
-#         print("[*] restarted!")
+while True:
+    try:
+        print("[*] bot starting..")
+ 
+        bot.polling(none_stop=True, interval=2)
+        # Предполагаю, что бот может мирно завершить работу, поэтому
+        # даем выйти из цикла
+        break
+
+    except Exception as ex:
+        print("[*] error - {}".format(str(ex))) # Описание ошибки
+
+
+        print("[*] rebooting..")
+            # bot.send_message(int(admin), "[*] rebooting..")
+
+        bot.stop_polling()
+        # Останавливаем чтобы не получить блокировку
+        time.sleep(15)
+        print("[*] restarted!")
 
 #
