@@ -1,0 +1,14 @@
+N;Questions;Type;Caunt;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+1;*Ad, soyad, ata adı;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+2;*Faktiki yaşadığı ünvan;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+3;Cins ;batton;2;Qadın;Kişi;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+4;*Təvəllüd;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+5;*Əlaqə nömrəsi;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+6;E-poçt;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+7;Sosial durum ;variable;10;dövlət qulluqçusu🏛 👷 ;təhsil işçisi 👨‍🏭 📚 ;səhiyyə işçisi 🏥 👨‍🏭;Təqaüdçü 👴 🧓;Tələbə 👨‍🎓;;Fermer 👨‍🌾;Sahibkar 💸;;Digər 👫;;;;;;;;;;;;;;;;;;;;
+8;*Müraciətin növü;batton;3;Ərizə;Təklif;Şikayət;;;;;;;;;;;;;;;;;;;;;;;;;;;
+9;*Müraciətin xarakteri ;batton;2;Fərdi;Kollektiv;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+10;*Müraciətin aid olduğu ərazi vahidi: (Bunu rayonların adın punkt olaraq və ya sadəcə yazmaları üçün yer qoymaqla etmək olar);text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+11;*Müraciətin mövzusu;variable;18;Təhsil📚 ;Səhiyyə🏥;Mədəniyyət🛐;Sənaye🏭;Tikinti🏗;Özəlləşdirmə⚙;Ekologiya♻;Maliyyə💰;Bank işi, siğorta🔒 ;Rabitə və nəqliyyat☎ & 🚛;Əmək münasibətləri, məşğulluq 👷;Sosial təminat( sosial müavinət, təqaüd, sosial yardım, əmək pensiyaları) 👫 💰;Ailə münasibətləri, himayəçilik, qəyyumluq👪🛡;Vəzifəli şəxslərin sui-istifadə məsələləri🏛;Kommunal-məişət xidməti🚰, ⚡;Təbii fəlakətlərlə bağlı məsələlər 🌪🌊🔥;Humanitar yardım ayrılması💬;Kənd təsərrüfatı məsələləri🌾 ;;;;;;;;;;;;
+12;*Müraciətin məzmunu;text;0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+13;*Əlavə qoşma fayllar;batton;0;Yes;No;;;;;;;;;;;;;;;;;;;;;;;;;;;;
