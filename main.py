@@ -80,10 +80,10 @@ def vopros_input():
             # print(row)
             data1[count] = {
                 'agreement': row['agreement'],
-                'Send request': row['Send request'],
+                'Error': row['Error'],
                 'Hot lines': row['Hot lines'],
                 "Question": row['Question'],
-                'Follow us': row['Follow us']
+                'Follow us': row['Final message']
 
             }
             count += 1
@@ -215,7 +215,7 @@ def Save_data_exel(id_page, Global_vopros):
         writer = csv.writer(file, delimiter=';')
         writer.writerows([file_list])
     # print(str(templates[f'{id_page}']['FIO']))
-    bot.send_message(int(templates[f'{id_page}']['id']), f"{str(templates[f'{id_page}']['FIO']).split(' ')[0]} Sizin müraciətiniz qeydə alınmışdır. Müraciətinizə meclisinfo tərəfindən baxıldıqdan sonra geri dönüş ediləcəkdir.")
+    bot.send_message(int(templates[f'{id_page}']['id']), f"{str(templates[f'{id_page}']['FIO']).split(' ')[0]} {One_data[1]['Final message']}")
 
     del templates[f"{id_page}"]
     with open("data/data.json", "w", encoding='utf-8') as file:
@@ -436,7 +436,7 @@ def texl_loyder(message):
                 for bykva in list(str(message.text)):
                     if not bykva in '1234567890., ':
                         print(f'{bykva} - неверно')
-                        bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                        bot.send_message(message.from_user.id, f"{One_data[1]['Error']}")
                         return 1
 
 
@@ -449,13 +449,13 @@ def texl_loyder(message):
                 for bykva in list(str(message.text)):
                     if not bykva in '1234567890 ':
                         print(f'{bykva} - неверно')
-                        bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                        bot.send_message(message.from_user.id, f"{One_data[1]['Error']}")
                         return 1
                     elif bykva in '1234567890':
                         caunt_local += 1
 
                 if caunt_local < 9:
-                    bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                    bot.send_message(message.from_user.id, f"{One_data[1]['Error']}")
                     return 1
 
                 templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
@@ -466,7 +466,7 @@ def texl_loyder(message):
 
                 if not '@' in str(message.text):
                     print(f'неверно')
-                    bot.send_message(message.from_user.id, 'Xahiş edirik istədiyiniz formatda yazın')
+                    bot.send_message(message.from_user.id, f"{One_data[1]['Error']}")
                     return 1
 
                 templates[f"{message.from_user.id}"][templates[f"{message.from_user.id}"]['Number']] = message.text
@@ -587,7 +587,7 @@ def repeat_all_message(message):
 while True:
     try:
         print("[*] bot starting..")
- 
+
         bot.polling(none_stop=True, interval=2)
         # Предполагаю, что бот может мирно завершить работу, поэтому
         # даем выйти из цикла
