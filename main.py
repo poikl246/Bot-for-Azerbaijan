@@ -83,7 +83,7 @@ def vopros_input():
                 'Error': row['Error'],
                 'Hot lines': row['Hot lines'],
                 "Question": row['Question'],
-                'Follow us': row['Final message']
+                'Final message': row['Final message']
 
             }
             count += 1
